@@ -16,7 +16,7 @@
         <li>
           <%= link to: cart_path(@conn, :show) do %>
             cart <span class="badge"><%= items_count(@conn) %></span>
-            <span>(<%= items_price(@conn) %>)</span>
+            <span>(<%= format_price(items_price(@conn)) %>)</span>
           <% end %>
         </li>
       <% end %>
