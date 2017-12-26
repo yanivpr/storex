@@ -21,4 +21,11 @@ defmodule StorexWeb.SessionController do
         |> render("new.html")
     end
   end
+
+  def delete(conn, _params) do
+    conn
+    |> CurrentUser.forget()
+    |> put_flash(:info, "Logged out")
+    |> redirect(to: "/")
+  end
 end

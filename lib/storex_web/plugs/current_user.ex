@@ -9,7 +9,7 @@ defmodule StorexWeb.Plugs.CurrentUser do
 
   def call(conn, _opts) do
     user_id = get_session(conn, @session_name)
-    
+
     cond do
       user = user_id && Accounts.get_user!(user_id) -> assign_user(conn, user)
       true -> assign_user(conn, nil)
@@ -27,4 +27,8 @@ defmodule StorexWeb.Plugs.CurrentUser do
   end
 
   def get(conn), do: conn.assigns[@assign_name]
+
+  def forget(conn) do
+    delete_session(conn, @session_name)
+  end
 end
