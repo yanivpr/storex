@@ -4,8 +4,9 @@ defmodule Storex.Sales.LineItem do
   alias Storex.Sales.LineItem
 
 
-  schema "sales_line_item" do
+  schema "sales_line_items" do
     belongs_to :cart, Storex.Sales.Cart
+    belongs_to :order, Storex.Sales.Order
     belongs_to :book, Storex.Store.Book
     field :quantity, :integer
     timestamps()
